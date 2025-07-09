@@ -1,9 +1,0 @@
-// NOTE: ifndef , define, endif are guards (macros) to prevent multiple inclusions of the same header file in a single translation unit.
- #ifndef MEMORY_H // check if MEMORY_H is  already defined or not
-#define MEMORY_H // if not defined already then, define MEMORY_H to prevent multiple inclusions
-
-
-
-#endif  // ends the ifndef guard
-
-// NOTE: But a better inclusions guard would be to use #pragma once
