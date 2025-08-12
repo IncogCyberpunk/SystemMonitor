@@ -1,4 +1,6 @@
 #include "process.hpp"
+#include "colors.hpp"
+
 #include <sstream>
 #include <vector>
 #include <iomanip>
@@ -51,12 +53,6 @@ Process getProcessInfo(int pid) {
         std::string token;
         for (int i = 0; i < 13; ++i) iss >> token;  // skip to utime by dumping first 13 values in string token
     
-        // Now we can access values from 14th index onwards
-        // NOTE:
-        // utime (14th field): user CPU time
-        // stime (15th field): system CPU time
-        // cutime (16th field): user CPU time of child processes of this process
-        // cstime (17th field): system CPU time of child processes of this process
         unsigned long utime, stime, cutime, cstime;
         iss >> utime >> stime >> cutime >> cstime;
 
@@ -101,10 +97,14 @@ void printProcesses(int num ) { // default arguments are only used in function d
     }
 
     std::sort(processes.begin(), processes.end(), compareCpu); // std::sort provided by <algorithm>, here sorts the vector of processes in descending order based on CPU usage
-
-    std::cout << "++++++ PROCESS MONITOR ++++++\n"
+    std::cout << getColorCode("blue") // set the color to blue
+              << "    Top " << num << " processes by CPU usage:" 
+              << std::endl 
               << std::endl
-              << "PID\tCPU%\tMEM (MB)\tCommand\n";
+              << getColorCode("yellow"); // reset the color to default
+    std::cout<< "PID\tCPU%\tMEM (MB)\tCommand\n" << std::endl; 
+
+    std::cout << getColorCode("reset"); // reset the color to default
     for (int i = 0; i < num && i < processes.size(); ++i) {
         const auto& p = processes[i];
         std::cout << p.pid << "\t"
