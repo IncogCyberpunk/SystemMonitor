@@ -71,7 +71,9 @@ cmake ..
 make
 ``````
 
-## Running the monitor
+---
+
+## 🚀 Run the Monitor
 ```bash
 
 # Run the compiled monitor executable
