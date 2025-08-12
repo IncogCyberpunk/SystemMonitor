@@ -1,10 +1,9 @@
-# 🚀 Basic Process Monitor in C++
+# 🚀 Basic System Monitor in C++
 
 A lightweight **real-time system monitor** written in C++ — think of it as a minimal, dependency-free `top` clone.  
 It uses the **Linux `/proc` filesystem** to display CPU usage, memory stats, system uptime, load averages, and the top running processes.
 
 ---
-
 ## ✨ Features
 
 ✅ **System Information**
